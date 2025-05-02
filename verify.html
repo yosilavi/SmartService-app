@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phone Verification</title>
+  <style>
+    body {
+      background-color: #03112E;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    input {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      width: 250px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #219A6F;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .verified {
+      font-size: 24px;
+      color: #00FF99;
+    }
+  </style>
+</head>
+<body>
+  <h2>Phone Verification</h2>
+  <p>We'll send you a 6-digit code via SMS to verify your number.</p>
+  <input type="text" id="phone" placeholder="Enter your phone number"/>
+  <button onclick="sendCode()">SEND VERIFICATION CODE</button>
+  <input type="text" id="code" placeholder="Enter 6-digit code"/>
+  <p id="timer">Resend in 0:30</p>
+  <button onclick="verifyCode()">VERIFY</button>
+
+  <script>
+    const expectedCode = "123456";
+    function sendCode() {
+      alert("Code sent: " + expectedCode);
+    }
+
+    function verifyCode() {
+      const input = document.getElementById("code").value;
+      if (input === expectedCode) {
+        document.body.innerHTML = '<div class="verified">verified</div>';
+        document.body.style.backgroundColor = "#03112E";
+      } else {
+        alert("Invalid code");
+      }
+    }
+  </script>
+</body>
+</html>
