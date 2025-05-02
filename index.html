@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>SmartService</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
+      background-color: #0A2F24;
+      font-family: Arial, sans-serif;
+      color: white;
       margin: 0;
       padding: 0;
-      background-color: #0A1F1C;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      color: white;
     }
 
     img {
       width: 96px;
       height: 96px;
-      margin-bottom: 24px;
       border-radius: 24px;
+      margin-bottom: 24px;
     }
 
     h1 {
       font-size: 28px;
-      font-weight: 600;
+      font-weight: bold;
       margin: 0;
+      margin-bottom: 12px;
     }
 
     p {
       font-size: 16px;
-      color: #A0A0A0;
-      margin: 8px 0 24px 0;
+      color: #D1D5DB;
+      margin: 0;
+      margin-bottom: 32px;
       text-align: center;
     }
 
-    .btn {
-      background-color: #2D8F65;
-      color: white;
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 500;
+    .start-btn {
+      background-color: #2CA97A;
       border: none;
+      padding: 14px 28px;
+      font-size: 16px;
       border-radius: 12px;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    .btn:hover {
+    .start-btn:hover {
       opacity: 0.95;
     }
   </style>
 </head>
 <body>
-  <img src="https://i.imgur.com/FSw9Yym.png" alt="Logo" />
+
+  <img src="https://i.imgur.com/vzj3A8N.png" alt="SmartService Logo" />
+
   <h1>SmartService</h1>
   <p>Smart, simple, and powerful lead management</p>
-  <a href="verify.html">
-    <button class="btn">Get Started</button>
-  </a>
+
+  <button class="start-btn" onclick="location.href='verify.html'">Get Started</button>
+
 </body>
 </html>
