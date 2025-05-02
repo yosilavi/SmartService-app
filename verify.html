@@ -5,7 +5,7 @@
     <title>Phone Verification</title>
     <style>
       body {
-        background-color: #03112e;
+        background-color: #03121E;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -15,67 +15,69 @@
         color: white;
         margin: 0;
       }
+
       h1 {
-        font-size: 28px;
+        font-size: 24px;
         margin-bottom: 10px;
       }
+
       p {
-        margin-bottom: 30px;
-        color: #c0c0c0;
+        font-size: 14px;
+        color: #CCCCCC;
+        margin-bottom: 20px;
       }
+
       input {
-        width: 250px;
-        padding: 12px;
-        margin: 10px 0;
+        padding: 10px;
+        margin: 8px;
+        width: 220px;
+        border-radius: 6px;
         border: none;
-        border-radius: 8px;
-        font-size: 16px;
+        font-size: 14px;
       }
+
       button {
-        width: 260px;
-        padding: 12px;
-        margin-top: 10px;
-        background-color: #219a6f;
+        background-color: #2E7F5E;
         color: white;
-        font-weight: bold;
+        padding: 12px 30px;
         border: none;
-        border-radius: 8px;
-        cursor: pointer;
+        border-radius: 10px;
         font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
       }
-      #verified-screen {
-        display: none;
-        font-size: 24px;
-        color: white;
+
+      .verified {
+        font-size: 22px;
+        color: lightgreen;
+        margin-top: 30px;
       }
     </style>
   </head>
   <body>
-    <div id="verify-screen">
-      <h1>Phone Verification</h1>
-      <p>We'll send you a 6-digit code via SMS to verify your number.</p>
-      <input type="text" id="phone" placeholder="Enter your phone number" />
-      <button onclick="sendCode()">SEND VERIFICATION CODE</button>
-      <input type="text" id="code" placeholder="Enter 6-digit code" />
-      <p id="resend">Resend in 0:30</p>
-      <button onclick="verifyCode()">VERIFY</button>
-    </div>
-    <div id="verified-screen">verified</div>
+    <h1>Phone Verification</h1>
+    <p>We'll send you a 6-digit code via SMS to verify your number.</p>
+    <input type="text" placeholder="Enter your phone number" id="phone" />
+    <button onclick="sendCode()">SEND VERIFICATION CODE</button>
+    <input type="text" placeholder="Enter 6-digit code" id="code" />
+    <p id="resend">Resend in 0:30</p>
+    <button onclick="verifyCode()">VERIFY</button>
 
     <script>
-      let sentCode = '123456'; // קוד דוגמה לבדיקה
-
       function sendCode() {
-        alert('Verification code sent: ' + sentCode);
+        alert("Code sent: 123456"); // תחליף בעתיד למערכת אמיתית
       }
 
       function verifyCode() {
-        const entered = document.getElementById('code').value;
-        if (entered === sentCode) {
-          document.getElementById('verify-screen').style.display = 'none';
-          document.getElementById('verified-screen').style.display = 'block';
+        const code = document.getElementById("code").value;
+        if (code === "123456") {
+          document.body.innerHTML = `
+            <div style="color:white;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;background:#03121E">
+              <div class="verified">Verified</div>
+            </div>
+          `;
         } else {
-          alert('Incorrect code.');
+          alert("Wrong code");
         }
       }
     </script>
