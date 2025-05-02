@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phone Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: #03112E;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      color: #CCCCCC;
+      margin-bottom: 30px;
+      max-width: 300px;
+    }
+    input {
+      padding: 12px;
+      width: 260px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      text-align: center;
+    }
+    button {
+      background-color: #24A47A;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 260px;
+    }
+    .resend {
+      font-size: 12px;
+      color: #AAAAAA;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Phone Verification</h1>
+  <p>We'll send you a 6-digit code via SMS to verify your number.</p>
 
+  <input type="text" placeholder="Enter your phone number" />
+  <button>SEND VERIFICATION CODE</button>
+
+  <input type="text" placeholder="Enter 6-digit code" />
+  <div class="resend">Resend in 0:30</div>
+
+  <button>VERIFY</button>
+</body>
+</html>
