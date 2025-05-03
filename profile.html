@@ -1,123 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Profile Edit</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: #0A2F24;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      color: white;
-    }
-
-    .top-bar {
-      width: 100%;
-      padding: 20px;
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .save-back-btn {
-      background-color: #24A47A;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 40px;
-      width: 90%;
-      max-width: 400px;
+      padding-top: 60px;
     }
 
     .avatar {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 12px;
-      border: 2px solid white;
+      background-color: #2e7d64;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
-    .change-photo {
-      margin-bottom: 24px;
-      background-color: #24A47A;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      cursor: pointer;
+    h1 {
+      margin: 0 0 40px 0;
+      font-size: 32px;
+    }
+
+    label {
+      font-size: 18px;
+      color: #ccc;
+      display: block;
+      margin-bottom: 6px;
     }
 
     input[type="text"] {
-      width: 100%;
+      width: 80vw;
+      max-width: 350px;
       padding: 12px;
-      font-size: 16px;
-      border-radius: 8px;
+      font-size: 18px;
       border: none;
-      margin-bottom: 24px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      background-color: #000;
+      color: white;
     }
 
-    .checkbox-group {
+    .checkbox-row {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      width: 100%;
+      justify-content: space-between;
+      width: 80vw;
+      max-width: 350px;
       margin-bottom: 40px;
     }
 
-    .checkbox-group label {
-      margin-left: 8px;
-      font-size: 14px;
+    .checkbox-row label {
+      margin: 0;
     }
 
-    .checkbox-group input {
-      width: 18px;
-      height: 18px;
+    .checkbox-row input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
     }
 
+    button {
+      padding: 16px 40px;
+      font-size: 20px;
+      background-color: #2e7d64;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 500;
+    }
+
+    button:active {
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
-  <div class="top-bar">
-    <button class="save-back-btn" onclick="saveAndGoBack()">Save & Back</button>
+
+  <div class="avatar">S</div>
+  <h1>Profile</h1>
+
+  <label for="name">Full Name</label>
+  <input type="text" id="name" placeholder="Your name" value="Yosi" />
+
+  <div class="checkbox-row">
+    <label for="notif">Notifications</label>
+    <input type="checkbox" id="notif" checked />
   </div>
 
-  <div class="container">
-    <img src="logo.png" alt="Profile" class="avatar" id="profileImage" />
-    <button class="change-photo" onclick="changePhoto()">Change Photo</button>
-    <input type="text" id="nameInput" placeholder="Your name" />
-    <div class="checkbox-group">
-      <input type="checkbox" id="notify" checked />
-      <label for="notify">Notifications</label>
-    </div>
-  </div>
+  <button onclick="goNext()">Save & Back</button>
 
   <script>
-    function changePhoto() {
-      alert("Change photo clicked");
-    }
-
-    function saveAndGoBack() {
-      const name = document.getElementById("nameInput").value;
-      const notify = document.getElementById("notify").checked;
-      console.log("Saved:", { name, notify });
-      window.location.href = "next.html"; // Change to actual next screen
+    function goNext() {
+      // כאן תוכל לשמור את הנתונים אם תתחבר ל-DB בעתיד
+      window.location.href = "next.html";
     }
   </script>
+
 </body>
 </html>
