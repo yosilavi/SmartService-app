@@ -5,66 +5,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SmartService</title>
   <link rel="stylesheet" href="chat.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0A2F24;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .search {
+      margin: 0 20px 20px;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      width: calc(100% - 40px);
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 16px;
+    }
+
+    .chat-list {
+      list-style: none;
+      padding: 0 20px;
+      margin: 0;
+    }
+
+    .chat-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 15px 0;
+    }
+
+    .chat-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-info img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .chat-info .name {
+      font-weight: bold;
+    }
+
+    .chat-info .message {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .chat-time {
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .new-chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #2e7d64;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .new-chat-btn svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .settings-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <h1>SmartService</h1>
-    <i class="fas fa-cog settings-icon"></i>
+
+  <header>
+    <span>SmartService</span>
+    <div class="settings-icon">
+      <svg fill="white" viewBox="0 0 24 24">
+        <path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z"/>
+        <path d="M19.4 15A1.65 1.65 0 0019.65 12 1.65 1.65 0 0019.4 9M4.6 9A1.65 1.65 0 004.35 12 1.65 1.65 0 004.6 15M12 4.6V4M12 19.4V20"/>
+      </svg>
+    </div>
   </header>
 
-  <div class="search-bar">
-    <i class="fas fa-search"></i>
-    <input type="text" placeholder="Search" />
-  </div>
+  <input type="text" class="search" placeholder="Search" />
 
   <ul class="chat-list">
     <li class="chat-item">
-      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah" />
       <div class="chat-info">
-        <div class="chat-top">
-          <span class="name">Sarah Y.</span>
-          <span class="time">9:30 AM</span>
+        <img src="https://i.pravatar.cc/48?img=1" alt="Sarah" />
+        <div>
+          <div class="name">Sarah Y.</div>
+          <div class="message">I'll take care of that. Thank you!</div>
         </div>
-        <p>I’ll take care of that. Thank you!</p>
       </div>
+      <div class="chat-time">9:30 AM</div>
     </li>
     <li class="chat-item">
-      <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="James" />
       <div class="chat-info">
-        <div class="chat-top">
-          <span class="name">James W.</span>
-          <span class="time">8:45 AM</span>
+        <img src="https://i.pravatar.cc/48?img=2" alt="James" />
+        <div>
+          <div class="name">James W.</div>
+          <div class="message">I'll be there in a few minutes.</div>
         </div>
-        <p>I’ll be there in a few minutes.</p>
       </div>
+      <div class="chat-time">8:45 AM</div>
     </li>
     <li class="chat-item">
-      <img src="https://randomuser.me/api/portraits/men/47.jpg" alt="Alex" />
       <div class="chat-info">
-        <div class="chat-top">
-          <span class="name">Alex Johnson</span>
-          <span class="time">Yesterday</span>
+        <img src="https://i.pravatar.cc/48?img=3" alt="Alex" />
+        <div>
+          <div class="name">Alex Johnson</div>
+          <div class="message">Sounds good!</div>
         </div>
-        <p>Sounds good!</p>
       </div>
+      <div class="chat-time">Yesterday</div>
     </li>
-    <li class="chat-item group">
-      <div class="group-icon">
-        <i class="fas fa-users"></i>
-      </div>
+    <li class="chat-item">
       <div class="chat-info">
-        <div class="chat-top">
-          <span class="name">Dependable Garage Doors</span>
-          <span class="time">Yesterday</span>
+        <div style="width:48px;height:48px;border-radius:50%;background:#2e7d64;display:flex;align-items:center;justify-content:center;margin-right:10px;">
+          <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+            <path d="M16 11c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zM8 11c1.657 0 3 1.343 3 3S9.657 17 8 17s-3-1.343-3-3 1.343-3 3-3zm8-8c1.657 0 3 1.343 3 3S17.657 9 16 9s-3-1.343-3-3 1.343-3 3-3z"/>
+          </svg>
         </div>
-        <p>All right, everyone, let’s meet at...</p>
+        <div>
+          <div class="name">Dependable Garage Doors</div>
+          <div class="message">All right, everyone, let’s meet at...</div>
+        </div>
       </div>
+      <div class="chat-time">Yesterday</div>
     </li>
   </ul>
 
-  <button class="new-chat-btn">
-    <i class="fas fa-plus"></i>
-  </button>
+  <div class="new-chat-btn" onclick="alert('New chat creation here!')">
+    <svg fill="white" viewBox="0 0 24 24">
+      <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
 </body>
 </html>
