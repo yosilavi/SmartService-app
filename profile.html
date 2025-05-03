@@ -1,84 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Edit Profile</title>
+  <meta charset="UTF-8">
+  <title>Profile Edit</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       background-color: #0A2F24;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
       color: white;
     }
+
+    .top-bar {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .save-back-btn {
+      background-color: #24A47A;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 60px;
+      margin-top: 40px;
+      width: 90%;
+      max-width: 400px;
     }
-    .top-bar {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-    .btn {
-      background-color: #1DB954;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      font-size: 14px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .profile-pic {
+
+    .avatar {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background-color: #ffffff20;
       object-fit: cover;
       margin-bottom: 12px;
+      border: 2px solid white;
     }
-    input[type="text"] {
-      padding: 12px;
+
+    .change-photo {
+      margin-bottom: 24px;
+      background-color: #24A47A;
+      color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
-      width: 260px;
-      margin-bottom: 16px;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
     }
-    .label-row {
-      width: 260px;
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 24px;
+    }
+
+    .checkbox-group {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
+      justify-content: flex-start;
+      width: 100%;
+      margin-bottom: 40px;
     }
-    .checkbox {
-      transform: scale(1.2);
+
+    .checkbox-group label {
+      margin-left: 8px;
+      font-size: 14px;
     }
+
+    .checkbox-group input {
+      width: 18px;
+      height: 18px;
+    }
+
   </style>
 </head>
 <body>
   <div class="top-bar">
-    <button class="btn" onclick="saveAndGo()">Save & Back</button>
+    <button class="save-back-btn" onclick="saveAndGoBack()">Save & Back</button>
   </div>
 
   <div class="container">
-    <img src="https://via.placeholder.com/120" alt="Profile" class="profile-pic" />
-    <button class="btn" style="margin-bottom: 20px;">Change Photo</button>
-
-    <input type="text" placeholder="Enter your name" value="Yosi" />
-
-    <div class="label-row">
-      <label for="notifications">Notifications</label>
-      <input type="checkbox" id="notifications" class="checkbox" checked />
+    <img src="logo.png" alt="Profile" class="avatar" id="profileImage" />
+    <button class="change-photo" onclick="changePhoto()">Change Photo</button>
+    <input type="text" id="nameInput" placeholder="Your name" />
+    <div class="checkbox-group">
+      <input type="checkbox" id="notify" checked />
+      <label for="notify">Notifications</label>
     </div>
   </div>
 
   <script>
-    function saveAndGo() {
-      // פה אפשר להוסיף שמירת נתונים בעתיד
-      window.location.href = "nextpage.html";
+    function changePhoto() {
+      alert("Change photo clicked");
+    }
+
+    function saveAndGoBack() {
+      const name = document.getElementById("nameInput").value;
+      const notify = document.getElementById("notify").checked;
+      console.log("Saved:", { name, notify });
+      window.location.href = "next.html"; // Change to actual next screen
     }
   </script>
 </body>
