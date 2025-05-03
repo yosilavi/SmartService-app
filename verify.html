@@ -73,5 +73,15 @@
   <div class="resend">Resend in 0:30</div>
 
   <button class="btn">VERIFY</button>
+<script>
+  document.querySelector("button:last-of-type").addEventListener("click", function () {
+    const code = document.querySelectorAll("input")[1].value;
+    if (code === "123456") {
+      window.location.href = "verified.html";
+    } else {
+      alert("Incorrect code. Please try again.");
+    }
+  });
+</script>
 </body>
 </html>
