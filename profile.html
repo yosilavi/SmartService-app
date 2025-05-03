@@ -2,115 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Profile</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
       background-color: #0A2F24;
+      font-family: Arial, sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 60px;
+      padding: 20px;
     }
-    .back-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 18px;
+
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .top-bar button {
+      background-color: #24A47A;
       color: white;
-      text-decoration: none;
-      background-color: transparent;
-      border: 2px solid white;
-      padding: 6px 12px;
-      border-radius: 8px;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 16px;
     }
-    .profile-pic {
+
+    .profile-img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background-color: #ffffff30;
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 15px;
+      object-fit: cover;
+      margin-bottom: 10px;
     }
-    input[type="file"] {
-      display: none;
-    }
-    .upload-label {
-      background-color: #1DBF73;
+
+    .change-photo {
+      background-color: #24A47A;
       color: white;
-      padding: 8px 16px;
-      border-radius: 8px;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
       font-size: 14px;
       cursor: pointer;
-      margin-bottom: 30px;
-    }
-    .input-field {
-      width: 80%;
-      max-width: 300px;
-      padding: 12px;
       margin-bottom: 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
     }
-    .switch {
+
+    input[type="text"] {
+      width: 80%;
+      max-width: 320px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .notifications {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 30px;
+      width: 80%;
+      max-width: 320px;
+      margin-bottom: 40px;
     }
-    .switch input {
-      width: 40px;
-      height: 20px;
-    }
-    .save-btn {
-      background-color: #1DBF73;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
+
+    .notifications label {
+      flex: 1;
       font-size: 16px;
-      cursor: pointer;
+    }
+
+    .notifications input {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
-
-  <a href="index.html" class="back-button">Back</a>
-
-  <div class="profile-pic" id="preview"></div>
-  <label for="profile-pic" class="upload-label">Change Photo</label>
-  <input type="file" id="profile-pic" accept="image/*" />
-
-  <input type="text" class="input-field" placeholder="Enter your name" />
-
-  <div class="switch">
-    <label>Notifications</label>
-    <input type="checkbox" checked />
+  <div class="top-bar">
+    <button onclick="saveAndGoNext()">Save & Back</button>
   </div>
 
-  <button class="save-btn">Save</button>
+  <img src="https://via.placeholder.com/120" alt="Profile" class="profile-img" />
+  <button class="change-photo">Change Photo</button>
+
+  <input type="text" placeholder="Yosi" />
+
+  <div class="notifications">
+    <label for="notify">Notifications</label>
+    <input type="checkbox" id="notify" checked />
+  </div>
 
   <script>
-    const fileInput = document.getElementById("profile-pic");
-    const preview = document.getElementById("preview");
-
-    fileInput.addEventListener("change", function () {
-      const file = this.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          preview.style.backgroundImage = `url(${e.target.result})`;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+    function saveAndGoNext() {
+      // פה תוכל לשמור נתונים בעתיד
+      window.location.href = "next-screen.html";
+    }
   </script>
-
 </body>
 </html>
