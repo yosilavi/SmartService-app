@@ -67,21 +67,22 @@
   <p>We'll send you a 6-digit code via SMS to verify your number.</p>
 
   <input type="text" placeholder="Enter your phone number" />
-  <button class="btn">SEND VERIFICATION CODE</button>
+  <button type="button" class="btn">SEND VERIFICATION CODE</button>
 
   <input type="text" placeholder="Enter 6-digit code" />
   <div class="resend">Resend in 0:30</div>
 
-  <button class="btn">VERIFY</button>
-<script>
-  document.querySelector("button:last-of-type").addEventListener("click", function () {
-    const code = document.querySelectorAll("input")[1].value;
-    if (code === "123456") {
-      window.location.href = "verified.html";
-    } else {
-      alert("Incorrect code. Please try again.");
-    }
-  });
-</script>
+  <button type="button" class="btn">VERIFY</button>
+
+  <script>
+    document.querySelector("button:last-of-type").addEventListener("click", function () {
+      const code = document.querySelectorAll("input")[1].value;
+      if (code === "123456") {
+        window.location.href = "verified.html";
+      } else {
+        alert("Incorrect code. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>
