@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SmartService</title>
-  <link rel="stylesheet" href="chat.css" />
   <style>
     body {
       margin: 0;
@@ -13,156 +12,136 @@
       color: white;
     }
 
-    header {
+    .header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 20px;
       font-size: 24px;
       font-weight: bold;
     }
 
-    .search {
-      margin: 0 20px 20px;
+    .settings-icon {
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .search-container {
+      padding: 0 20px 10px;
+    }
+
+    .search-box {
+      width: 100%;
       padding: 12px;
       border-radius: 10px;
+      background-color: #114232;
       border: none;
-      width: calc(100% - 40px);
-      background-color: rgba(255, 255, 255, 0.1);
       color: white;
       font-size: 16px;
     }
 
     .chat-list {
       list-style: none;
-      padding: 0 20px;
+      padding: 0 0 80px;
       margin: 0;
     }
 
     .chat-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 0;
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .chat-info {
-      display: flex;
-      align-items: center;
-    }
-
-    .chat-info img {
+    .chat-item img {
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      margin-right: 10px;
+      margin-right: 12px;
     }
 
-    .chat-info .name {
+    .chat-info {
+      flex-grow: 1;
+    }
+
+    .chat-name {
       font-weight: bold;
     }
 
-    .chat-info .message {
+    .chat-message {
+      font-size: 15px;
       color: #ccc;
-      font-size: 14px;
     }
 
     .chat-time {
+      font-size: 13px;
       color: #aaa;
-      font-size: 12px;
+      white-space: nowrap;
     }
 
-    .new-chat-btn {
+    .fab {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #2e7d64;
-      border-radius: 50%;
       width: 60px;
       height: 60px;
+      background-color: #2e7d64;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .new-chat-btn svg {
-      width: 30px;
-      height: 30px;
-    }
-
-    .settings-icon svg {
-      width: 24px;
-      height: 24px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <span>SmartService</span>
-    <div class="settings-icon">
-      <svg fill="white" viewBox="0 0 24 24">
-        <path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z"/>
-        <path d="M19.4 15A1.65 1.65 0 0019.65 12 1.65 1.65 0 0019.4 9M4.6 9A1.65 1.65 0 004.35 12 1.65 1.65 0 004.6 15M12 4.6V4M12 19.4V20"/>
-      </svg>
-    </div>
-  </header>
+  <div class="header">
+    SmartService
+    <span class="settings-icon">⚙️</span>
+  </div>
 
-  <input type="text" class="search" placeholder="Search" />
+  <div class="search-container">
+    <input class="search-box" type="text" placeholder="Search" />
+  </div>
 
   <ul class="chat-list">
     <li class="chat-item">
+      <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah">
       <div class="chat-info">
-        <img src="https://i.pravatar.cc/48?img=1" alt="Sarah" />
-        <div>
-          <div class="name">Sarah Y.</div>
-          <div class="message">I'll take care of that. Thank you!</div>
-        </div>
+        <div class="chat-name">Sarah Y.</div>
+        <div class="chat-message">I'll take care of that. Thank you!</div>
       </div>
       <div class="chat-time">9:30 AM</div>
     </li>
     <li class="chat-item">
+      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="James">
       <div class="chat-info">
-        <img src="https://i.pravatar.cc/48?img=2" alt="James" />
-        <div>
-          <div class="name">James W.</div>
-          <div class="message">I'll be there in a few minutes.</div>
-        </div>
+        <div class="chat-name">James W.</div>
+        <div class="chat-message">I'll be there in a few minutes.</div>
       </div>
       <div class="chat-time">8:45 AM</div>
     </li>
     <li class="chat-item">
+      <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Alex">
       <div class="chat-info">
-        <img src="https://i.pravatar.cc/48?img=3" alt="Alex" />
-        <div>
-          <div class="name">Alex Johnson</div>
-          <div class="message">Sounds good!</div>
-        </div>
+        <div class="chat-name">Alex Johnson</div>
+        <div class="chat-message">Sounds good!</div>
       </div>
       <div class="chat-time">Yesterday</div>
     </li>
     <li class="chat-item">
       <div class="chat-info">
-        <div style="width:48px;height:48px;border-radius:50%;background:#2e7d64;display:flex;align-items:center;justify-content:center;margin-right:10px;">
-          <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-            <path d="M16 11c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zM8 11c1.657 0 3 1.343 3 3S9.657 17 8 17s-3-1.343-3-3 1.343-3 3-3zm8-8c1.657 0 3 1.343 3 3S17.657 9 16 9s-3-1.343-3-3 1.343-3 3-3z"/>
-          </svg>
-        </div>
-        <div>
-          <div class="name">Dependable Garage Doors</div>
-          <div class="message">All right, everyone, let’s meet at...</div>
-        </div>
+        <div class="chat-name">Dependable Garage Doors</div>
+        <div class="chat-message">All right, everyone, let’s meet at…</div>
       </div>
       <div class="chat-time">Yesterday</div>
     </li>
   </ul>
 
-  <div class="new-chat-btn" onclick="alert('New chat creation here!')">
-    <svg fill="white" viewBox="0 0 24 24">
-      <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
+  <div class="fab">+</div>
 
 </body>
 </html>
