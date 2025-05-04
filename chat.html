@@ -112,19 +112,19 @@
     }
 
     .popup {
-  display: none;
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background: white;
-  color: black;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: 220px;
-  padding: 10px;
-  font-size: 14px;
-  z-index: 10000;
-}
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 220px;
+      padding: 10px;
+      font-size: 14px;
+      z-index: 10000;
+    }
 
     .popup input {
       width: 100%;
@@ -217,7 +217,7 @@
         .forEach(contact => {
           const li = document.createElement("li");
           li.className = "chat-item";
-          li.onclick = () => window.location.href = chat-room.html?id=${contact.id};
+          li.onclick = () => window.location.href = `chat-room.html?id=${contact.id}`;
 
           li.innerHTML = `
             <img src="${contact.image}" alt="${contact.name}">
@@ -241,4 +241,3 @@
 
 </body>
 </html>
-
