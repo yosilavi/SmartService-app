@@ -55,6 +55,8 @@
       align-items: center;
       padding: 16px 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: inherit;
     }
 
     .chat-item img {
@@ -116,25 +118,29 @@
       border-radius: 10px;
       margin-bottom: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      width: 180px;
-      padding: 10px 0;
-      font-size: 16px;
-      text-align: left;
+      width: 220px;
+      padding: 10px;
+      font-size: 14px;
     }
 
-    .popup-option {
-      padding: 10px 16px;
-      cursor: pointer;
+    .popup input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
-    .popup-option:hover {
-      background-color: #f2f2f2;
-    }
-
-    .popup hr {
-      margin: 0;
+    .popup button {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      background-color: #1aaa75;
+      color: white;
       border: none;
-      border-top: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -148,55 +154,83 @@
   </div>
 
   <div class="search-container">
-    <input class="search-box" type="text" placeholder="Search" />
+    <input class="search-box" type="text" id="searchInput" placeholder="Search" oninput="renderContacts()" />
   </div>
 
-  <ul class="chat-list">
-    <li class="chat-item">
-      <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah">
-      <div class="chat-info">
-        <div class="chat-name">Sarah Y.</div>
-        <div class="chat-message">I'll take care of that. Thank you!</div>
-      </div>
-      <div class="chat-time">9:30 AM</div>
-    </li>
-    <li class="chat-item">
-      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="James">
-      <div class="chat-info">
-        <div class="chat-name">James W.</div>
-        <div class="chat-message">I'll be there in a few minutes.</div>
-      </div>
-      <div class="chat-time">8:45 AM</div>
-    </li>
-    <li class="chat-item">
-      <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Alex">
-      <div class="chat-info">
-        <div class="chat-name">Alex Johnson</div>
-        <div class="chat-message">Sounds good!</div>
-      </div>
-      <div class="chat-time">Yesterday</div>
-    </li>
-  </ul>
+  <ul class="chat-list" id="chatList"></ul>
 
   <div class="fab-container">
     <div class="popup" id="popup">
-      <div class="popup-option">Add a new contact</div>
-      <hr />
-      <div class="popup-option">Add from contacts</div>
+      <input type="text" id="contactName" placeholder="Name">
+      <input type="text" id="contactPhone" placeholder="Phone">
+      <input type="text" id="contactImage" placeholder="Image URL">
+      <button onclick="addContact()">Add Contact</button>
     </div>
     <div class="fab" onclick="togglePopup()">+</div>
   </div>
 
   <script>
+    const popup = document.getElementById("popup");
+    const chatList = document.getElementById("chatList");
+
     function togglePopup() {
-      const popup = document.getElementById("popup");
       popup.style.display = popup.style.display === "block" ? "none" : "block";
     }
 
+    function loadContacts() {
+      return JSON.parse(localStorage.getItem("contacts") || "[]");
+    }
+
+    function saveContacts(contacts) {
+      localStorage.setItem("contacts", JSON.stringify(contacts));
+    }
+
+    function addContact() {
+      const name = document.getElementById("contactName").value.trim();
+      const phone = document.getElementById("contactPhone").value.trim();
+      const image = document.getElementById("contactImage").value.trim() || "https://i.imgur.com/I80W1Q0.png";
+
+      if (!name || !phone) return alert("Please fill in all fields");
+
+      const contacts = loadContacts();
+      contacts.push({ id: Date.now(), name, phone, image });
+      saveContacts(contacts);
+
+      document.getElementById("contactName").value = "";
+      document.getElementById("contactPhone").value = "";
+      document.getElementById("contactImage").value = "";
+
+      popup.style.display = "none";
+      renderContacts();
+    }
+
+    function renderContacts() {
+      const contacts = loadContacts();
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      chatList.innerHTML = "";
+
+      contacts
+        .filter(c => c.name.toLowerCase().includes(search))
+        .forEach(contact => {
+          const li = document.createElement("li");
+          li.className = "chat-item";
+          li.onclick = () => window.location.href = chat-room.html?id=${contact.id};
+
+          li.innerHTML = `
+            <img src="${contact.image}" alt="${contact.name}">
+            <div class="chat-info">
+              <div class="chat-name">${contact.name}</div>
+              <div class="chat-message">${contact.phone}</div>
+            </div>
+            <div class="chat-time">Now</div>
+          `;
+          chatList.appendChild(li);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderContacts);
     document.addEventListener("click", function (e) {
-      const fab = document.querySelector(".fab");
-      const popup = document.getElementById("popup");
-      if (!fab.contains(e.target) && !popup.contains(e.target)) {
+      if (!popup.contains(e.target) && !document.querySelector(".fab").contains(e.target)) {
         popup.style.display = "none";
       }
     });
