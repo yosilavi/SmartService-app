@@ -119,11 +119,27 @@
       background: white;
       color: black;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       width: 220px;
-      padding: 10px;
       font-size: 14px;
       z-index: 10000;
+      overflow: hidden;
+    }
+
+    .popup-option {
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: right;
+    }
+
+    .popup-option:hover {
+      background-color: #f5f5f5;
+    }
+
+    .popup hr {
+      margin: 0;
+      border: none;
+      border-top: 1px solid #ddd;
     }
 
     .popup input {
@@ -162,22 +178,42 @@
 
   <ul class="chat-list" id="chatList"></ul>
 
+  <!-- תיבת שתי אפשרויות -->
+  <div class="popup" id="popup">
+    <div class="popup-option" onclick="selectContact()">הוסף מאנשי קשר</div>
+    <hr />
+    <div class="popup-option" onclick="showNewContactForm()">איש קשר חדש</div>
+  </div>
+
+  <!-- טופס הוספת איש קשר -->
+  <div class="popup" id="addForm" style="display: none;">
+    <input type="text" id="contactName" placeholder="Name">
+    <input type="text" id="contactPhone" placeholder="Phone">
+    <input type="text" id="contactImage" placeholder="Image URL">
+    <button onclick="addContact()">Add Contact</button>
+  </div>
+
   <div class="fab-container">
-    <div class="popup" id="popup">
-      <input type="text" id="contactName" placeholder="Name">
-      <input type="text" id="contactPhone" placeholder="Phone">
-      <input type="text" id="contactImage" placeholder="Image URL">
-      <button onclick="addContact()">Add Contact</button>
-    </div>
     <div class="fab" onclick="togglePopup()">+</div>
   </div>
 
   <script>
     const popup = document.getElementById("popup");
+    const addForm = document.getElementById("addForm");
     const chatList = document.getElementById("chatList");
 
     function togglePopup() {
       popup.style.display = popup.style.display === "block" ? "none" : "block";
+      addForm.style.display = "none";
+    }
+
+    function showNewContactForm() {
+      popup.style.display = "none";
+      addForm.style.display = "block";
+    }
+
+    function selectContact() {
+      alert("הפונקציה 'הוסף מאנשי קשר' תופעל מול אנשי הקשר של המכשיר בעתיד.");
     }
 
     function loadContacts() {
@@ -203,7 +239,7 @@
       document.getElementById("contactPhone").value = "";
       document.getElementById("contactImage").value = "";
 
-      popup.style.display = "none";
+      addForm.style.display = "none";
       renderContacts();
     }
 
@@ -233,8 +269,9 @@
 
     document.addEventListener("DOMContentLoaded", renderContacts);
     document.addEventListener("click", function (e) {
-      if (!popup.contains(e.target) && !document.querySelector(".fab").contains(e.target)) {
+      if (!popup.contains(e.target) && !document.querySelector(".fab").contains(e.target) && !addForm.contains(e.target)) {
         popup.style.display = "none";
+        addForm.style.display = "none";
       }
     });
   </script>
