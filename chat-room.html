@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.imgur.com/GkFj3Ds.png'); /* רקע כהה בסגנון וואטסאפ */
+      background-size: cover;
+      font-family: sans-serif;
+      direction: rtl;
+    }
 
+    .chat-header {
+      background-color: #1F2C34;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .chat-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+
+    .chat-header .name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .chat-header .back {
+      font-size: 24px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      padding: 10px;
+      height: calc(100vh - 130px);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 10px 14px;
+      margin: 6px 0;
+      border-radius: 10px;
+      font-size: 15px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .me {
+      background-color: #005C4B;
+      color: white;
+      align-self: flex-start;
+      border-bottom-right-radius: 0;
+    }
+
+    .them {
+      background-color: #202C33;
+      color: white;
+      align-self: flex-end;
+      border-bottom-left-radius: 0;
+    }
+
+    .time {
+      font-size: 11px;
+      color: #ccc;
+      margin-top: 4px;
+      text-align: left;
+    }
+
+    .chat-footer {
+      background-color: #1F2C34;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 24px;
+      border: none;
+      background-color: #2A3942;
+      color: white;
+      margin: 0 10px;
+    }
+
+    .chat-footer .icon {
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-header">
+    <div class="back">&#x2190;</div>
+    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="profile">
+    <div class="name">+1 408 123 4567</div>
+  </div>
+
+  <div class="chat-body">
+    <div class="message me">
+      היי, קיבלתי את התמונות. נראים ממש טוב!
+      <div class="time">13:45</div>
+    </div>
+
+    <div class="message them">
+      Glad to hear! Let me know if you need changes.
+      <div class="time">13:46</div>
+    </div>
+
+    <div class="message me">
+      הכול מעולה. אני שולח לך תשלום עוד מעט.
+      <div class="time">13:47</div>
+    </div>
+  </div>
+
+  <div class="chat-footer">
+    <div class="icon">&#128512;</div>
+    <input type="text" placeholder="הקלד הודעה...">
+    <div class="icon">&#128247;</div>
+    <div class="icon">&#10148;</div>
+  </div>
+
+</body>
+</html>
